@@ -1,0 +1,19 @@
+extend ../../layout/index.pug
+block content
+        h1 Login
+        if errors
+         each error in errors
+          .alert.alert-danger=error
+
+        form(action="/auth/login" method="POST")
+            .form-group
+                label(for="email") Email
+                input(type="text" name="email" id="email" class="form-control" value= values?values.email:'')
+            .form-group
+                label(for="pass") Password
+                input(type="password" name="password" id="pass" class="form-control")
+            p Quên mật khẩu? bấm 
+             a(href="/auth/resetPassword") vào đây
+            d-flex
+             button.btn.btn-primary.mt-2.mr-2 Login
+             a.btn.btn-primary.mt-2(href="/auth/create") Create

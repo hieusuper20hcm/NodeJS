@@ -1,0 +1,36 @@
+extend ../../layout/index.pug
+block content
+        h1 Users        
+        form(action="/users/search" method="GET" class="d-flex")
+            input(type='text' name='q' class="form-control mr-2")
+            button.btn.btn-primary.mb-2 Search
+        table.table.table-hover
+            thead
+                tr
+                 th(scope='col') Name
+                 th(scope='col') Avatar
+                 th(scope='col') Phone
+                 th(scope='col') Action
+            tbody
+                each user in users
+                 tr
+                  td=user.name
+                  td
+                   img(src=user.avatar, alt="" width="60px")
+                  td=user.phone         
+                  td.d-flex
+                     a(href="/users/"+user.id) View
+                     span &nbsp;
+                     if(user.status===true)
+                      button(disabled).btn-danger Delete
+                     else
+                      form(action="/users/"+user.id method="POST")
+                        button.btn-danger Delete
+                     span &nbsp;
+                     if(user.status===true&&user.id!==id)
+                      button(disabled).btn-warning Update
+                     else
+                      form(action="/users/update/"+user.id)
+                        button.btn-warning Update
+                                
+        a.btn.btn-primary.mb-2(href="/auth/create") Create          

@@ -1,0 +1,18 @@
+extend ../../layout/index.pug
+block content
+        h1 Create Product
+        if errors
+         each error in errors
+          .alert.alert-danger=error
+
+        form(action="/managerProduct/create" method="POST" enctype="multipart/form-data")
+            .form-group
+                label(for="name") Name
+                input(type="text" name="name" id="name" class="form-control" value= values?values.name:'')
+            .form-group
+                label(for="price") Price
+                input(type="number" name="price" id="price" class="form-control" value= values?values.price:'')
+            .form-group
+                label(for="img") Avatar
+                input(type="file" name="img" id="img" class="form-control-file") 
+            button.btn.btn-primary.mt-2 Create

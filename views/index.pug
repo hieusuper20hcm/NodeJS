@@ -1,0 +1,11 @@
+head
+ link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
+body
+ .container.pt-5
+    h1(style="text-align:center") Hello #{userNav.name} !
+    .text-center
+      .d-flex.justify-content-center
+       a(href="/product", class="btn btn-success") Mua Bán Sản Phẩm
+       span &nbsp;
+       a(href="/users", class="btn btn-warning" id="clickUsers" data-status=userNav.status) Quản Lý
+script(src="/js/admin.js")

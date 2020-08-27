@@ -1,0 +1,22 @@
+extend ../../layout/index.pug
+block content
+    h1 Update Product
+    if errors
+        each error in errors
+         .alert.alert-danger=error
+
+    form(action="/managerProduct/update/"+product._id method="POST" enctype="multipart/form-data")
+        .form-group
+            label(for="name") Name
+            input(type="text" name="name" id="name" class="form-control" value= product?product.name:'')
+        .form-group
+            label(for="price") Price
+            input(type="number" name="price" id="price" class="form-control" value= product?product.price:'')
+        .form-group
+            label(for="pass") Old Avatar
+            br
+            img(src= product.img, alt="" width="60px")
+        .form-group
+            label(for="img") New Avatar
+            input(type="file" name="img" id="img" class="form-control-file") 
+        button.btn.btn-primary.mt-2 Update

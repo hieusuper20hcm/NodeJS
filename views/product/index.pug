@@ -1,0 +1,28 @@
+extend ../../layout/index.pug
+block content
+        h1 Product
+        .row
+         each product in products
+          .col-lg-3.mb-5
+           .card-group
+            .card
+                img.card-img-top(src=product.img)
+                .card-body
+                    h5.card-title=product.name
+                    p.card-tex=new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(product.price)+ 'đ'
+                    a.btn.btn-primary(href="/cart/add/"+product.id) Đặt hàng
+        if(pageNumber>1)
+         ul.pagination.justify-content-center        
+            li.page-item
+                a.page-link(href='/product/?page='+prePage) Previous
+            - for (let x = 0; x < pageNumber; x++)
+                if(x+1===page)
+                 li.page-item.active
+                    a.page-link(href='/product/?page='+(x+1)) #{x+1}
+                else
+                 li.page-item
+                    a.page-link(href='/product/?page='+(x+1)) #{x+1}
+            li.page-item
+                a.page-link(href='/product/?page='+nextPage) Next
+        
+                    

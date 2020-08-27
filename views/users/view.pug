@@ -1,0 +1,29 @@
+extend ../../layout/index.pug
+block content
+    h1 View user
+    p(style="font-size: 30px") Name: 
+     span(style="font-size: 25px")= user.name
+    p(style="font-size: 30px") Create date: 
+     span(style="font-size: 25px")=date
+    h4 Total Count: #{sumCount}
+    h4 Total Money: #{new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(sumMoney)} đ
+    if(cart.length>0)
+     h1 View cart
+     .ml-5
+        table.table.table-hover
+            thead
+                tr
+                 th(scope='col') Avatar
+                 th(scope='col') Name  
+                 th(scope='col') Price                
+                 th(scope='col') Count
+                 th(scope='col') Create date
+            tbody
+                - for (let i = 0; i < cart.length; i++)
+                  tr
+                   td
+                    img(src=cart[i].img, alt="")
+                   td=cart[i].nameProduct
+                   td=new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(cart[i].price)+ 'đ'
+                   td=cart[i].count
+                   td=createDate[i].toUTCString()

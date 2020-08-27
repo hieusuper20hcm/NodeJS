@@ -1,0 +1,10 @@
+/* test css */
+img{
+    width: 100px;
+}
+@media screen  and (max-width: 768px) { 
+    img{
+        width: 65px;
+        height: 80px;
+    }
+}

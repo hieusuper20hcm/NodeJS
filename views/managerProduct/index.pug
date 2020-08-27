@@ -1,0 +1,30 @@
+extend ../../layout/index.pug
+block content
+        h1 Product        
+        form(action="/managerProduct/search" method="GET" class="d-flex")
+            input(type='text' name='q' class="form-control mr-2")
+            button.btn.btn-primary.mb-2 Search
+        table.table.table-hover
+            thead
+                tr
+                 th(scope='col') Name
+                 th(scope='col') Avatar
+                 th(scope='col') Price
+                 th(scope='col') Action
+            tbody
+                each product in products
+                 tr
+                  td=product.name
+                  td
+                   img(src=product.img, alt="" width="60px")
+                  td=new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(product.price)+ 'đ'        
+                  td.d-flex
+                     a(href="/managerProduct/"+product.id) View
+                     span &nbsp;
+                     form(action="/managerProduct/"+product.id method="POST")
+                        button.btn-danger Delete
+                     span &nbsp;
+                     form(action="/managerProduct/update/"+product.id)
+                        button.btn-warning Update
+                                
+        a.btn.btn-primary.mb-2(href="/managerProduct/create") Create          

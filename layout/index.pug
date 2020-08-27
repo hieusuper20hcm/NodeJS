@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        a.navbar-brand(href='#') Navbar
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+         span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+            ul.navbar-nav
+                li.nav-item
+                 a.nav-link.active(href='/') Home
+                if(userNav)
+                 if(!userNav.status)
+                  li.nav-item.dropdown
+                    a#navbardrop.nav-link.dropdown-toggle.disabled(href='/users', data-toggle='dropdown') Manager
+                    .dropdown-menu
+                     a.dropdown-item(href='/users' aria-disabled="true") User
+                     a.dropdown-item(href='/managerProduct' aria-disabled="true") Product
+                     a.dropdown-item(href='/managerCart' aria-disabled="true") Cart
+                 else
+                  li.nav-item.dropdown
+                    a#navbardrop.nav-link.dropdown-toggle.active(href='/users', data-toggle='dropdown') Manager
+                    .dropdown-menu
+                     a.dropdown-item(href='/users') User
+                     a.dropdown-item(href='/managerProduct') Product
+                     a.dropdown-item(href='/managerCart') Cart 
+                else
+                 li.nav-item.dropdown
+                    a#navbardrop.nav-link.dropdown-toggle.disabled(href='/users', data-toggle='dropdown') Manager
+                    .dropdown-menu
+                     a.dropdown-item(href='/users' aria-disabled="true") User
+                     a.dropdown-item(href='/managerProduct' aria-disabled="true") Product
+                     a.dropdown-item(href='/managerCart' aria-disabled="true") Cart
+                                            
+                li.nav-item
+                 a.nav-link.active(href='/product') Product
+                li.nav-item
+                 a.nav-link.active(href='/cart') Cart
+                  if(countCart)
+                   sup=countCart
+        if(userNav)
+         span.badge-pill.badge-success.pt-1.pb-1=userNav.name
+         a(href="/auth/logout").badge.badge-danger.pt-2.pb-2 Log Out 
+        else
+         a(href="/auth/login").badge.badge-primary.pt-2.pb-2 Log In
+    .container.pt-5
+        block content
