@@ -11,7 +11,7 @@ module.exports={
                 let moneyManager=0
                 e.cart.map(e=>{
                     countManager+=e.count
-                    moneyManager+=e.price                     
+                    moneyManager+=e.price*e.count                   
                 })
                 sumMoney+=moneyManager;
                 sumCount+=countManager;
@@ -40,7 +40,7 @@ module.exports={
             let moneyManager=0
             e.cart.map(e=>{
                 countManager+=e.count
-                moneyManager+=e.price                     
+                moneyManager+=e.price*e.count                     
             })
             sumMoney+=moneyManager;
             sumCount+=countManager;
@@ -65,7 +65,7 @@ module.exports={
             if(v.img.split('/').splice(0,1)!=''){
                 v.img=`/${v.img.split('/').splice(0).join('/')}`
             }
-            sumMoney+=v.price;
+            sumMoney+=v.price*v.count;
             sumCount+=v.count;
         })
         res.render('managerCart/view',{

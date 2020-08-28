@@ -9,7 +9,7 @@ block content
     h4 Total Money: #{new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(sumMoney)} đ
     if(cart.length>0)
      h1 View cart
-     .ml-5
+     .ml-2(style="overflow-x:scroll")
         table.table.table-hover
             thead
                 tr

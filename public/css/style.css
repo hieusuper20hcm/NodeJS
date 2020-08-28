@@ -1,10 +1,23 @@
 /* test css */
-img{
+td img{
     width: 100px;
 }
-@media screen  and (max-width: 768px) { 
-    img{
-        width: 65px;
+body{
+  overflow-x: hidden;
+}
+@media screen  and (max-width: 500px) {
+    td img{
+        width: 50px;
         height: 80px;
+    }
+    .container{
+        margin: 0px;
+        padding: 10px;
+    }
+}
+@media screen  and (max-width: 400px){
+    td img{
+        width: 30px;
+        height: 50px;
     }
 }

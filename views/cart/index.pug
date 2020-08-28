@@ -49,8 +49,9 @@ html(lang="en")
         else
          a#userID(href="/auth/login" data-userid=sessionID).badge.badge-primary.pt-2.pb-2 Log In
     .container.pt-5 
-        h1 Carts        
-        table.table.table-hover
+        h1 Carts
+        div(style="overflow-x:scroll")        
+         table.table.table-hover
             thead
                 tr
                  th(scope='col') Avatar
@@ -66,7 +67,7 @@ html(lang="en")
                   td=cart.cart.nameProduct
                   td=new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(cart.cart.price)+ 'đ'
                   td
-                   input(type="number" style="width: 35px" class="countJS" min="1" data-id=cart.id value=cart.cart.count)        
+                   input(type="number" style="width: 40px" class="countJS" min="1" data-id=cart.id value=cart.cart.count)        
                   td
                     form(action="/cart/add/"+cart.cart.productID, method="post")
                       button.btn-danger Delete       

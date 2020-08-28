@@ -6,7 +6,8 @@ block content
         form(action="/managerCart/search" method="GET" class="d-flex")
             input(type='text' name='q' class="form-control mr-2")
             button.btn.btn-primary.mb-2 Search
-        table.table.table-hover
+        div(style="overflow-x:scroll")
+         table.table.table-hover
             thead
                 tr
                  th(scope='col') Email
@@ -29,9 +30,4 @@ block content
                    td=boughtsCount[x]
                    td.d-flex
                      a(href="/managerCart/"+boughts[x].id) View
-                     span &nbsp;
-                     form(action="/managerProduct/"+boughts[x].id method="POST")
-                        button.btn-danger Delete
-                     span &nbsp;   
-        //each boughtsCount in boughtsCount
         

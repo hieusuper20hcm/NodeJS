@@ -45,7 +45,7 @@ module.exports={
                 }
                 createDate.push(e.createDate)
                 cart.push(v);
-                sumMoney+=v.price;
+                sumMoney+=v.price*v.count;
                 sumCount+=v.count;                
             })  
         })     
